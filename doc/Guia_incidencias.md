@@ -1,19 +1,14 @@
-# Gestión de incidencias
+# Gestion de las incidencias de censo
 
-Guía para la creación y gestión de incidencias en el grupo Decide-Ío-Almacenamiento
+Documento con las plantillas para la creación de incidencias del grupo Decide-Io en el modulo de Censo.
 
-## Creación de incidencias
+## Plantillas
 
-Para la creación de incidencias se seguirá una plantilla que le guiará en los campos necesarios:
-
-* [**Bugs**](#bugs)
 * [**Features**](#features)
-
-
-### Bugs
-
+* [**Bugs**](#bugs)
 
 ### Features
 
+### Bugs
 
 ## Gestión de incidencias
