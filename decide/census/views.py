@@ -2,7 +2,6 @@ from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import generics
 from rest_framework.response import Response
-from django.views.generic import TemplateView
 from rest_framework.status import (
         HTTP_201_CREATED as ST_201,
         HTTP_204_NO_CONTENT as ST_204,
@@ -13,9 +12,6 @@ from rest_framework.status import (
 
 from base.perms import UserIsStaff
 from .models import Census
-
-class CensusView(TemplateView):
-    template_name = 'census/census.html'
 
 
 class CensusCreate(generics.ListCreateAPIView):
