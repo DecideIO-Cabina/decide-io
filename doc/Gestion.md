@@ -1,4 +1,4 @@
-# Decide-Io-Censo 
+# Decide-Ío-Censo 
 ## Grupo 2
 ## ID de Opera: 13
 
@@ -9,7 +9,6 @@
 * **González García, Iván:**
 * **Luque Muñoz, Miguel:**
 
-Guia y plantillas necesarias para la creación de incidencias del grupo Decide-Io en el modulo de Censo.
 
 ## Enlaces de interés:
 
@@ -27,8 +26,8 @@ Guia y plantillas necesarias para la creación de incidencias del grupo Decide-I
 * Agrupación de censos por votación
 * Selección de votantes por DNI y nombre al crear
 * Reutilización de censo
-* Exportación
-* Importación
+* Exportación de censo
+* Importación de censo desde Excel
 * Filtrado por edad/sexo/otros (Coordinación con Autenticación)
 
 ### Planificación del proyecto
