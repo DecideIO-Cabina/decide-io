@@ -75,8 +75,12 @@ https://1984.lsi.us.es/wiki-egc/images/egc/2/22/02-Decide-Install.pdf
 ## Gestión del cambio, incidencias y depuración
 
 ### Gestión del código fuente
-Se realiza un fork propio del grupo encargado del subsistema, a partir de ahí el grupo trabajará sobre ese fork
-Antes de comenzar a trabajar se hará un pull del repositorio para disponer de él en local. Cuando algún integrante quiera llevar a cabo algún cambio, primero deberá asegurarse de hacer pull. Si no existe ningún conflicto, podrá hacer commit de los cambios realizados y push. En caso contrario, deberá dirigirse al historial de cambios y buscar al responsable del código que genera el conflicto. A este se le comunicará la naturaleza del conflicto y una propuesta de posible solución ya sea por su parte o de forma conjunta. La resolución del conflicto debe satisfacer a ambas partes pudiendo intervenir el coordinador si fuese necesario.
+
+Se realiza un fork propio del grupo encargado del subsistema, a partir de ahí el grupo trabajará sobre ese fork.
+Para la gestión del código se usará github desktop. Antes de comenzar a trabajar se hará un pull del repositorio para disponer de él en local. Cuando algún integrante quiera llevar a cabo algún cambio, primero deberá asegurarse de hacer pull. Si no existe ningún conflicto, podrá hacer commit de los cambios realizados y push. En caso contrario, deberá dirigirse al historial de cambios y buscar al responsable del código que genera el conflicto. A este se le comunicará la naturaleza del conflicto y una propuesta de posible solución ya sea por su parte o de forma conjunta. La resolución del conflicto debe satisfacer a ambas partes pudiendo intervenir el coordinador si fuese necesario.
+Ejemplos:
+Se ha modificado un archivo mostrando en rojo las lineas antiguas y en verde el resultado tras la modificación
+https://github.com/DECIDEIO-CENSO/decideio-censo/commit/0580fb334d8d7aef44d00e7b449e73e6da3e7e88#diff-c7dc8742947f13f1ddc89ee1ebf164f1
 
 ### Gestión de la construcción e integración continua
 
