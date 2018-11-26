@@ -35,6 +35,43 @@ Guia y plantillas necesarias para la creación de incidencias del grupo Decide-I
 
 ### Entorno de desarrollo
 
+#### Instalación Python 3.6.4
+* Instalar Python (en la carpeta c:\Python36):
+  https://www.python.org/download
+En Windows, ir a Equipo (botón derecho) > Propiedades > Configuración avanzada del
+sistema > Variables de entorno… > En Variables del sistema Editar la variable Path
+(añadir : C:\Python36;C:\Python36\Scripts) 
+
+#### Instalación de Django
+
+* Acceder a cmd e introducir: pip install Django 
+
+#### Instalación Eclipse Oxygen http://www.eclipse.org
+#### Instalación Pydev en eclipse
+**Importante: PyDev requiere Java 8 y Eclipse 4.6 (Neon) o
+superior(Oxygen) para soportar Python 2.6 o superior.**
+* Otras versiones:
+    * Eclipse 4.5, Java 8: PyDev 5.2.0
+    * Eclipse 3.8, Java 7: PyDev 4.5.5
+    * Eclipse 3.x, Java 6: PyDev 2.8.2
+* Seguir las instrucciones recogidas en:
+http://www.pydev.org/manual_101_install.html
+
+#### Comprobando la instalación
+Ir a 'window > preferences' y comprobar si hay una opción PyDev.
+Configurar el intérprete de Python
+1. Ir a window > preferences > PyDev > Interpreter - Python
+2. Elegir el intérprete que hemos instalado, para ello basta pulsar Auto Config
+El Auto Config intentará encontrarlo (python.exe) en PATH, pero puede fallar.
+3. El System libs debe contener al menos los directorios Lib y Lib/site-packages.
+4. Pulsar Aceptar.
+
+Información obtenida de http://www.lsi.us.es/docencia/get.php?id=9175
+
+#### Instalando decide
+En el siguiente enlace tenemos un breve tutorial de como empezar:
+https://1984.lsi.us.es/wiki-egc/images/egc/2/22/02-Decide-Install.pdf
+
 ## Gestión del cambio, incidencias y depuración
 
 ### Gestión del código fuente
