@@ -1,4 +1,4 @@
-# Decide-Io-Censo
+# Decide-Io-Censo 
 ## Grupo 2
 ## ID de Opera: 13
 
@@ -23,6 +23,13 @@ Guia y plantillas necesarias para la creación de incidencias del grupo Decide-I
 ### Introducción y contexto
 
 ### Descripción del sistema
+* Creación de varios censos simultáneamente (la votación se indica una sola vez)
+* Agrupación de censos por votación
+* Selección de votantes por DNI y nombre al crear
+* Reutilización de censo
+* Exportación
+* Importación
+* Filtrado por edad/sexo/otros (Coordinación con Autenticación)
 
 ### Planificación del proyecto
 
