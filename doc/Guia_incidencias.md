@@ -13,19 +13,19 @@ Esta incidencia se usara por parte de otros subsitemas para realizar algún tipo
 
 ***Se asignará la etiqueta `Feature` a la incidencia.***
 
-[Plantilla Feature]
+[Plantilla Feature](https://github.com/DECIDEIO-CENSO/decideio-censo/issues/new?template=propuesta-de-feature.md)
 
 ### Bugs
 
 ***Se asignará la etiqueta `Bug` a la incidencia.***
 
-[Plantilla Bug]
+[Plantilla Bug](https://github.com/DECIDEIO-CENSO/decideio-censo/issues/new?template=informe-de-bug.md)
 
 ### Duda
 
 ***Se asignará la etiqueta `Duda técnica` o `Duda de usuario` a la incidencia dependiendo del tipo duda.***
 
-[Plantilla Duda]
+[Plantilla Duda](https://github.com/DECIDEIO-CENSO/decideio-censo/issues/new?template=duda.md)
 
 ## Gestión de incidencias
 Para gestionar las incidencias el equipo de desarrollo seguirá los siguientes pasos:
