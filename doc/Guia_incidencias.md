@@ -9,19 +9,21 @@ Guia y plantillas necesarias para la creación de incidencias del grupo Decide-I
 * [**Dudas**](#duda)
 
 ### Features
-Esta incidencia se usara por parte de otros subsitemas para realizar algún tipo de petición al subsitema *Censo*.
+Esta incidencia se usara por parte de otros subsistemas para realizar algún tipo de petición al subsistema *Censo*.
 
 ***Se asignará la etiqueta `Feature` a la incidencia.***
 
 [Plantilla Feature](https://github.com/DECIDEIO-CENSO/decideio-censo/issues/new?template=propuesta-de-feature.md)
 
 ### Bugs
+Esta incidencia se usara por parte de otros subsistemas para notificar algún tipo de error en el subsistema *Censo*.
 
 ***Se asignará la etiqueta `Bug` a la incidencia.***
 
 [Plantilla Bug](https://github.com/DECIDEIO-CENSO/decideio-censo/issues/new?template=informe-de-bug.md)
 
 ### Duda
+Esta incidencia se usara por parte de otros subsistemas para preguntar algo sobre el subsistema *Censo*.
 
 ***Se asignará la etiqueta `Duda técnica` o `Duda de usuario` a la incidencia dependiendo del tipo duda.***
 
