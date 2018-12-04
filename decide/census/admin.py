@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from import_export.admin import ImportExportModelAdmin 
 from .models import Census
 
 
@@ -10,4 +10,8 @@ class CensusAdmin(admin.ModelAdmin):
     search_fields = ('voter_id', )
 
 
-admin.site.register(Census, CensusAdmin)
+# admin.site.register(Census, CensusAdmin)
+
+@admin.register(Census)
+class ViewAdmin(ImportExportModelAdmin):
+    pass
