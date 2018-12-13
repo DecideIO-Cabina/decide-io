@@ -1,6 +1,7 @@
 from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import generics
+from census import serializers
 from rest_framework.response import Response
 from django.views.generic import TemplateView
 from rest_framework.status import (
@@ -19,7 +20,8 @@ class CensusView(TemplateView):
 
 
 class CensusCreate(generics.ListCreateAPIView):
-    permission_classes = (UserIsStaff,)
+    #permission_classes = (UserIsStaff,)
+    serializer_class = serializers.CensusSerializers
 
     def create(self, request, *args, **kwargs):
         voting_id = request.data.get('voting_id')
