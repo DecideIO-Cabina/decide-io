@@ -45,7 +45,7 @@ def create2(request):
 
 class CensusCreate(generics.ListCreateAPIView):
     #permission_classes = (UserIsStaff,)
-    serializer_class = serializers.CensusSerializers
+    serializer_class = serializers.CensusSerializer
 
     def create(self, request, *args, **kwargs):
         voting_id = request.data.get('voting_id')
