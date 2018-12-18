@@ -7,4 +7,6 @@ urlpatterns = [
     path('census', CensusView.as_view()),
     path('', views.CensusCreate.as_view(), name='census_create'),
     path('<int:voting_id>/', views.CensusDetail.as_view(), name='census_detail'),
+    path('create', views.create, name='create'),
+    path('create2', views.create2, name='create2'),
 ]
