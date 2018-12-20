@@ -1,0 +1,80 @@
+{% load render_table from django_tables2 %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>app</title>
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+<h1>Artistas</h1>
+
+{% if form %}
+	<form action="/app/usuario/" method="get">
+	    {{ form }}
+	    <input type="submit" value="Submit">
+	</form>
+{% endif %}
+
+<br>
+
+<form action="/app/createUsuario">
+    <input type="submit" value="Create usuario" />
+</form>
+
+<form action="/app/createArtista">
+    <input type="submit" value="Create artista" />
+</form>
+
+<form action="/app/createDiscografica">
+    <input type="submit" value="Create discografica" />
+</form>
+
+<form action="/app/createTiempo">
+    <input type="submit" value="Create tiempo" />
+</form>
+
+<form action="/app/createEstilo">
+    <input type="submit" value="Create estilo" />
+</form>
+
+<br>
+<br>
+<form action="/app/top">
+    <input type="submit" value="Top 2 artistas mas escuchados" />
+</form>
+<br>
+<form action="/app">
+    <input type="submit" value="Todos los artistas" />
+</form>
+</br>
+
+<br>
+
+{% if dic %}
+	<h2>Artistas por discografica</h2>
+	{% for d, artistasTable in dic.items %}
+		<h3>{{d}}</h3>
+		<ul>
+			{% render_table artistasTable %}
+		</ul>
+	{% endfor %}
+{% endif %}
+
+
+{% if artistasDic %}
+	<h2>Artistas por estilo</h2>
+	{% for d, artistas in artistasDic.items %}
+		<h3>{{d}}</h3>
+		<ul>
+			{% render_table artistas %}
+		</ul>
+	{% endfor %}
+{% endif %}
+
+</br>
+
+</body>
+</html>

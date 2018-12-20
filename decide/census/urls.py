@@ -9,4 +9,6 @@ urlpatterns = [
     path('voters/', views.listVoters, name='census_voters'),
     path('voting/', views.selectVoting, name="select_voting"),
     path('<int:voting_id>/', views.CensusDetail.as_view(), name='census_detail'),
+    path('create', views.create, name='create'),
+    path('create2', views.create2, name='create2'),
 ]
