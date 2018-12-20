@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang='es'>
+  <header>
+  </header>
+  <section>
+    <h1>Votantes para votacion {{voting_id}}</h1>
+	<ul>
+		{% for v in voters %}
+	  	<li>
+	  		<p>{{v}}</p>
+	    </li>
+		{% endfor %}
+	</ul>
+  </section>
+</html>

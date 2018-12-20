@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='es'>
+  <header>
+  </header>
+  <section>
+    <div id="voting">
+        <form method="GET" action="/census/voters/">
+        <select id="voting_id">
+        	{% for v in votings %}
+        		<option label="{{v.name}}" value="{{v.id}}">
+        	{% endfor %}
+        </select>
+          
+        <input type="button" value="Enviar" onClick="send()"/>
+        </form>
+    </div>
+  </section>
+  
+<script type="text/javascript">
+	function send(){
+		var data = document.querySelector("#voting_id").value;
+		location.href = "/census/voters/?voting_id="+data;
+	}
+</script>
+  
+  
+</html>
