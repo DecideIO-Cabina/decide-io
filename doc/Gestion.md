@@ -93,6 +93,14 @@ https://github.com/DECIDEIO-CENSO/decideio-censo/commit/0580fb334d8d7aef44d00e7b
 
 ### Gestión de la construcción e integración continua
 
+Para la integración continua y la realización de los test de forma automática usaremos la herramienta Travis CI que se añadirá al proyecto tal y como se vio durante la sesión de prácticas. 
+
+Cada vez que un usuario realice un commit, Travis comprobara que el funcionamiento del proyecto es el correcto y producirá un log con los posibles errores que hubiese encontrado en la aplicación.
+
+Para acceder a ese log de Travis basta con entrar con nuestra cuenta de GitHub en la página web de [Travis](https://travis-ci.org/) o desde la propia página de GitHub podemos comprobar si los test han sido superados con éxitos o no pulsando en el siguiente [enlace](https://github.com/DECIDEIO-CENSO/decideio-censo/commits/master). Si los test no se hubiesen pasado satisfactoriamente encontraríamos una X roja al lado de nuestro commit.
+
+
+
 ### Gestión de liberaciones, despliegue y entregas
 
 ### Mapa de herramientas
