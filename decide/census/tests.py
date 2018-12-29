@@ -6,7 +6,10 @@ from rest_framework.test import APIClient
 from .models import Census
 from base import mods
 from base.tests import BaseTestCase
-
+from django.core.files import File
+import re
+import os
+import sys
 
 class CensusTestCase(BaseTestCase):
 
@@ -73,3 +76,39 @@ class CensusTestCase(BaseTestCase):
         response = self.client.delete('/census/{}/'.format(1), data, format='json')
         self.assertEqual(response.status_code, 204)
         self.assertEqual(0, Census.objects.count())
+        
+    def test_export_csv(self):
+        prueba = Census(voting_id=200,voter_id=201)
+        prueba.save()
+        
+        response = self.client.get('/census/exportcsv') #Si no va, probar anadir format='json' en los param
+        pattern = re.compile("^.*\d+,200,201.*$")
+        self.assertTrue(pattern.match(str(response.content)))
+       
+    def test_export_json(self):
+        prueba = Census(voting_id=200,voter_id=201)
+        prueba.save()
+        
+        response = self.client.get('/census/exportjson') #Si no va, probar anadir format='json' en los param
+        pattern = re.compile('^.*{"id": \d+, "voting_id": 200, "voter_id": 201}.*$')
+        self.assertTrue(pattern.match(str(response.content)))
+        
+    def test_export_excel(self):
+        prueba = Census(voting_id=200,voter_id=201)
+        prueba.save()
+        
+        response = self.client.get('/census/exportexcel') #Si no va, probar anadir format='json' en los param
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.has_header("Content-Disposition"))
+        self.assertEqual(response['Content-Type'], 'application/vnd.ms-excel')
+        
+    def test_import_csv(self):
+        files = {'upload_file': open(os.path.join(sys.path[0], "census\\testFiles\\census.csv"),'rb')}
+        response = self.client.post('/census/importcsv', files = files)
+        self.assertIsNotNone(Census.objects.filter(voting_id=200, voter_id=201))
+        
+    def test_import_json(self):
+        files = {'upload_file': open(os.path.join(sys.path[0], "census\\testFiles\\census.json"),'rb')}
+        response = self.client.post('/census/importjson', files = files)
+        self.assertIsNotNone(Census.objects.filter(voting_id=200, voter_id=201))
+        
