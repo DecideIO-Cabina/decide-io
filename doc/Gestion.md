@@ -76,11 +76,28 @@ https://1984.lsi.us.es/wiki-egc/images/egc/2/22/02-Decide-Install.pdf
 Durante el desarrollo normal del proyecto se comunicará cualquier incidencia interna mediante GitHub, utilizando las etiquetas que más se adecúen al caso. Posteriormente, el desarrollador que haya realizado el último commit sobre la funcionalidad que ha provocado la incidencia deberá encargarse de la misma, bien resolviéndola o delegando su resolución. La persona al cargo de resolver la incidencia, ya sea sobre código o sobre documentación, deberá hacer un branch cuando considere necesario (según prioridad) en el que trabajará. Finalmente, combinará su trabajo con la rama principal.
 
 En cuanto a las incidencias reportadas a otros subsistemas, se seguirá la plantilla encontrada en el repositorio del subsistema en cuestión, de la misma forma que se espera que las incidencias externas se reporten siguiendo la plantilla indicada en el documento "Guía de Incidencias".
+
 ### Gestión de commit
 
-Se deberá escribir un breve resumen en una línea sobre lo que trata el commit.
-También se deberá describir los cambios realizados más detalladamente en la descripción.
-Primero, deberán nombrarse los archivos modificados. A continuación se deberá explicar paso a paso cómo visualizar dichos cambios en el sistema desplegado(si procede).
+Debe realizarse commit cada vez que se consiga un pequeño incremento modular de funcionalidad, para tener una mejor traza de los cambios sufridos.
+
+Los commits deberán tener el siguiente formato:
+```
+(Tipo del commit) Added/Updated/Fixed [nombre del archivo]
+(LÍNEA EN BLANCO)
+Descripción más detallada de los cambios y modo de visualización, si procede
+(LÍNEA EN BLANCO)
+#ISSUE1234 (Código de incidencia, si procede)
+```
+
+El tipo del commit será uno de entre:
+* **Feature**: Corresponde a una nueva feature del sistema.
+* **Bug**: Corresponde a un arreglo de algún bug.
+* **Docs**: Corresponde a creación y gestión de documentación.
+* **Refactor**: Corresponde a cambios en el formato del código.
+* **Tests**: Corresponde a nuevos tests o cambios en ellos.
+* **Otros**: Corresponde a pequeños arreglos ajenos al código o el propio sistema.
+
 
 ### Gestión del código fuente
 
