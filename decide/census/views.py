@@ -134,29 +134,9 @@ def ImportAsJSON(request):
        return render(request, 'census/index.html')
     except:
        return render(request, 'census/import.html')
-
-# def ImportAsExcel(request):
-#     if request.method == 'POST':
-#         census_resource = CensusResource()
-#         dataset = Dataset()
-#                 
-#     try:
-#        new_censuss = request.FILES['myfile']
-#        for a in new_censuss.read().decode('Latin-1'):
-#            print(a)
-#            
-#        imported_data = dataset.load(new_censuss.read().decode('ISO-8859-1'),  format='xlsx')
-#        result = census_resource.import_data(dataset, dry_run=True)  # Test the data import 
-#     
-#        if not result.has_errors():
-#            census_resource.import_data(dataset, dry_run=False)  # Actually import now
-#        return render(request, 'census/index.html')
-#     except MultiValueDictKeyError:
-#        return render(request, 'census/import.html')
     
 class CensusCreate(generics.ListCreateAPIView):
-    #permission_classes = (UserIsStaff,)
-    serializer_class = serializers.CensusSerializer
+    permission_classes = (UserIsStaff,)
 
     def create(self, request, *args, **kwargs):
         voting_id = request.data.get('voting_id')
