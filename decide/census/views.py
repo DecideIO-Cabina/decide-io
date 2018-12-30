@@ -1,6 +1,6 @@
 from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth import User
+from django.contrib.auth.models import User
 from voting.models import Voting
 from rest_framework import generics
 from django.shortcuts import render, get_object_or_404,HttpResponse
