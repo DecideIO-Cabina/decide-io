@@ -15,6 +15,11 @@ addons:
   postgresql: "9.6"
 global:
   - PGPORT=5432
+  
+branches:
+  only:
+  - master
+  - dev
 
 before_script:
  - cp local_settings.travis.py local_settings.py
