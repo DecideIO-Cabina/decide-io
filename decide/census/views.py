@@ -155,8 +155,8 @@ def ImportAsJSON(request):
 #        return render(request, 'census/import.html')
     
 class CensusCreate(generics.ListCreateAPIView):
-    #permission_classes = (UserIsStaff,)
-    serializer_class = serializers.CensusSerializer
+    permission_classes = (UserIsStaff,)
+    
 
     def create(self, request, *args, **kwargs):
         voting_id = request.data.get('voting_id')
