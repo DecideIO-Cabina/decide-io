@@ -70,10 +70,6 @@ class CensusTestCase(BaseTestCase):
         response = self.client.post('/census/', data, format='json')
         self.assertEqual(response.status_code, 201)
         self.assertEqual(len(data.get('voters')), Census.objects.count() - 1)
-        
-    def test_list_voting_view(self):
-        response = self.client.get('/census/voters/?voting_id={}'.format(1))
-        self.assertEqual(response.status_code, 200)
 
     def test_destroy_voter(self):
         data = {'voters': [1]}
@@ -107,12 +103,12 @@ class CensusTestCase(BaseTestCase):
         self.assertEqual(response['Content-Type'], 'application/vnd.ms-excel')
         
     def test_import_csv(self):
-        files = {'upload_file': open(os.path.join(sys.path[0], "census/testFiles/census.csv"),'rb')}
+        files = {'upload_file': open(os.path.join(sys.path[0], "census\\testFiles\\census.csv"),'rb')}
         response = self.client.post('/census/importcsv', files = files)
         self.assertIsNotNone(Census.objects.filter(voting_id=200, voter_id=201))
         
     def test_import_json(self):
-        files = {'upload_file': open(os.path.join(sys.path[0], "census/testFiles/census.json"),'rb')}
+        files = {'upload_file': open(os.path.join(sys.path[0], "census\\testFiles\\census.json"),'rb')}
         response = self.client.post('/census/importjson', files = files)
         self.assertIsNotNone(Census.objects.filter(voting_id=200, voter_id=201))
         

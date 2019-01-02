@@ -38,19 +38,16 @@ def selectVoting(request):
     votings= set()
     allVotings = Census.objects.all().values_list('voting_id', flat=True)
     for v in allVotings:
-        voting = Voting.objects.filter(id=v)
-        if voting!=None:
-            votings.add(voting[0])
+          votings.add(Voting.objects.filter(id=v)[0])
     return render(request,'census/selectVoting.html', {'votings':votings})
 
 def listVoters(request):
         voting_id = request.GET.get('voting_id')
         voters = set()
         voter_ids = Census.objects.filter(voting_id=voting_id).values_list('voter_id', flat=True)
+        print(voter_ids)
         for v_id in voter_ids:
-            u = User.objects.filter(id=v_id)
-            if u:
-                voters.add(u[0])    
+            voters.add(User.objects.filter(id=v_id)[0])    
         return render(request, 'census/censusByVoting.html', {'voters': voters,'voting_id':voting_id})
 
 def create(request):
@@ -137,9 +134,29 @@ def ImportAsJSON(request):
        return render(request, 'census/index.html')
     except:
        return render(request, 'census/import.html')
+
+# def ImportAsExcel(request):
+#     if request.method == 'POST':
+#         census_resource = CensusResource()
+#         dataset = Dataset()
+#                 
+#     try:
+#        new_censuss = request.FILES['myfile']
+#        for a in new_censuss.read().decode('Latin-1'):
+#            print(a)
+#            
+#        imported_data = dataset.load(new_censuss.read().decode('ISO-8859-1'),  format='xlsx')
+#        result = census_resource.import_data(dataset, dry_run=True)  # Test the data import 
+#     
+#        if not result.has_errors():
+#            census_resource.import_data(dataset, dry_run=False)  # Actually import now
+#        return render(request, 'census/index.html')
+#     except MultiValueDictKeyError:
+#        return render(request, 'census/import.html')
     
 class CensusCreate(generics.ListCreateAPIView):
     permission_classes = (UserIsStaff,)
+    
 
     def create(self, request, *args, **kwargs):
         voting_id = request.data.get('voting_id')
