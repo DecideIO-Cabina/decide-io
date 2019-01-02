@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang='es'>
   <header>
+    <meta charset="utf-8"/>
+    <title>Selecci&oacute;n de votaci&oacute;n</title>
   </header>
   <section>
+  <h2>Selecciona una votaci&oacute;n para ver los votantes en su censo</h2>
     <div id="voting">
         <form method="GET" action="/census/voters/">
         <select id="voting_id">
-        	{% for v in votings %}
-        		<option label="{{v.name}}" value="{{v.id}}">
-        	{% endfor %}
+          {% for v in votings %}
+            <option label="{{v.name}}" value="{{v.id}}">
+          {% endfor %}
         </select>
           
         <input type="button" value="Enviar" onClick="send()"/>
@@ -17,10 +20,10 @@
   </section>
   
 <script type="text/javascript">
-	function send(){
-		var data = document.querySelector("#voting_id").value;
-		location.href = "/census/voters/?voting_id="+data;
-	}
+  function send(){
+    var data = document.querySelector("#voting_id").value;
+    location.href = "/census/voters/?voting_id="+data;
+  }
 </script>
   
   
