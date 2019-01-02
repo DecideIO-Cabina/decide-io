@@ -112,12 +112,12 @@ class CensusTestCase(BaseTestCase):
         self.assertEqual(response['Content-Type'], 'application/vnd.ms-excel')
         
     def test_import_csv(self):
-        files = {'upload_file': open(os.path.join(sys.path[0], "census\\testFiles\\census.csv"),'rb')}
+        files = {'upload_file': open(os.path.join(sys.path[0], "census/testFiles/census.csv"),'rb')}
         response = self.client.post('/census/importcsv', files = files)
         self.assertIsNotNone(Census.objects.filter(voting_id=200, voter_id=201))
         
     def test_import_json(self):
-        files = {'upload_file': open(os.path.join(sys.path[0], "census\\testFiles\\census.json"),'rb')}
+        files = {'upload_file': open(os.path.join(sys.path[0], "census/testFiles/census.json"),'rb')}
         response = self.client.post('/census/importjson', files = files)
         self.assertIsNotNone(Census.objects.filter(voting_id=200, voter_id=201))
         
