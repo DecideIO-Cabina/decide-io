@@ -77,6 +77,15 @@ class CensusTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 204)
         self.assertEqual(0, Census.objects.count())
         
+        
+    def test_list_voters_view(self):
+        response = self.client.get('/census/voters/?voting_id={}'.format(1))
+        self.assertEqual(response.status_code, 200)
+        
+    def test_select_voting_view(self):
+        response = self.client.get('/census/voting/')
+        self.assertEqual(response.status_code, 200)
+        
     def test_export_csv(self):
         prueba = Census(voting_id=200,voter_id=201)
         prueba.save()
