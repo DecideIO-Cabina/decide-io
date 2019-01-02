@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang='es'>
   <header>
-  	<title>Votantes para votaci&oacute;n {{voting_id}}</title>
+    <title>Votantes para votaci&oacute;n {{voting_id}}</title>
   </header>
   <section>
     <h2>Votantes para votaci&oacute;n {{voting_id}}</h2>
-	<ul>
-		{% for v in voters %}
-	  	<li>
-	  		<p>{{v}}</p>
-	    </li>
-		{% endfor %}
-	</ul>
+  <ul>
+    {% for v in voters %}
+      <li>
+        <p>{{v}}</p>
+      </li>
+    {% endfor %}
+  </ul>
   </section>
 </html>
