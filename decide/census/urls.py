@@ -9,7 +9,7 @@ urlpatterns = [
     path('voters/', views.listVoters, name='census_voters'),
     path('voting/', views.selectVoting, name="select_voting"),
 
-    path('census/', views.selectVoting, name="select_voting"),
+    path('census/', views.selectVotingReuse, name="select_voting_reuse"),
     path('reuse/', views.reuseCensus, name="reuse_census"),
 
     path('<int:voting_id>/', views.CensusDetail.as_view(), name='census_detail'),

@@ -144,7 +144,7 @@ def ImportAsJSON(request):
        return render(request, 'census/import.html')
 
 
-def selectVoting(request):
+def selectVotingReuse(request):
     votings = set()
     votingsList = list()
     allVotingsWithCensus = Census.objects.all().values_list('voting_id', flat=True)
