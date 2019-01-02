@@ -13,11 +13,40 @@ from rest_framework.status import (
 
 from base.perms import UserIsStaff
 from .models import Census
+from voting.models import Voting
+from django.db.models.base import Model
+from django.shortcuts import render
 
 class CensusView(TemplateView):
     template_name = 'census/census.html'
 
+def selectVoting(request):
+    votings = set()
+    votingsList = list()
+    allVotingsWithCensus = Census.objects.all().values_list('voting_id', flat=True)
+    
+    for v in allVotingsWithCensus:
+        votings.add(v)
+    
+    for v in Voting.objects.all().values_list('id', flat=True):
+        votingsList.append(v)
+    
+    for v in votings:
+        votingsList.remove(v)
+    
+    return render(request,'census/census.html', {'votings':votings, 'votingsW':votingsList})
 
+def reuseCensus(request):
+        voting_id_antiguo= request.GET.get('voting_id_antiguo')
+        voting_id_nuevo = request.GET.get('voting_id_nuevo')
+        
+        voters = Census.objects.filter(voting_id=voting_id_antiguo).values_list('voter_id', flat=True)
+        
+        for voter in voters:
+            census = Census(voting_id=voting_id_nuevo, voter_id=voter)
+            census.save()
+        return render(request, 'census/censoNuevo.html', {'voters': voters , 'voting_id':voting_id_nuevo})
+    
 class CensusCreate(generics.ListCreateAPIView):
     permission_classes = (UserIsStaff,)
 
