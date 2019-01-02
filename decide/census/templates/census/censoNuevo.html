@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang='es'>
+  <header>
+  </header>
+  <section>
+  <h1>El censo se ha creado satisfactoriamente y los ID de los votantes permitidos en la votacion {{voting_id}} son los siguiente:</h1>
+    <div id="voting">    
+    	{% for v in voters %}
+        	<option label="{{v}}" value="{{v}}">
+        {% endfor %}        
+    </div>
+  </section>  
+</html>

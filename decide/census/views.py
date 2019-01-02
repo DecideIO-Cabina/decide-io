@@ -29,7 +29,12 @@ from rest_framework.status import (
 from base.perms import UserIsStaff
 from .models import Census
 from voting.models import Voting
+
 from django.contrib.auth.models import User
+
+from django.db.models.base import Model
+from django.shortcuts import render
+
 
 class CensusView(TemplateView):
     template_name = 'census/census.html'
@@ -138,24 +143,34 @@ def ImportAsJSON(request):
     except:
        return render(request, 'census/import.html')
 
-# def ImportAsExcel(request):
-#     if request.method == 'POST':
-#         census_resource = CensusResource()
-#         dataset = Dataset()
-#                 
-#     try:
-#        new_censuss = request.FILES['myfile']
-#        for a in new_censuss.read().decode('Latin-1'):
-#            print(a)
-#            
-#        imported_data = dataset.load(new_censuss.read().decode('ISO-8859-1'),  format='xlsx')
-#        result = census_resource.import_data(dataset, dry_run=True)  # Test the data import 
-#     
-#        if not result.has_errors():
-#            census_resource.import_data(dataset, dry_run=False)  # Actually import now
-#        return render(request, 'census/index.html')
-#     except MultiValueDictKeyError:
-#        return render(request, 'census/import.html')
+
+def selectVoting(request):
+    votings = set()
+    votingsList = list()
+    allVotingsWithCensus = Census.objects.all().values_list('voting_id', flat=True)
+    
+    for v in allVotingsWithCensus:
+        votings.add(v)
+    
+    for v in Voting.objects.all().values_list('id', flat=True):
+        votingsList.append(v)
+    
+    for v in votings:
+        votingsList.remove(v)
+    
+    return render(request,'census/census.html', {'votings':votings, 'votingsW':votingsList})
+
+def reuseCensus(request):
+        voting_id_antiguo= request.GET.get('voting_id_antiguo')
+        voting_id_nuevo = request.GET.get('voting_id_nuevo')
+        
+        voters = Census.objects.filter(voting_id=voting_id_antiguo).values_list('voter_id', flat=True)
+        
+        for voter in voters:
+            census = Census(voting_id=voting_id_nuevo, voter_id=voter)
+            census.save()
+        return render(request, 'census/censoNuevo.html', {'voters': voters , 'voting_id':voting_id_nuevo})
+
     
 class CensusCreate(generics.ListCreateAPIView):
     permission_classes = (UserIsStaff,)
