@@ -2,6 +2,7 @@ from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from voting.models import Voting
+
 from rest_framework import generics
 from django.shortcuts import render, get_object_or_404,HttpResponse
 from census import serializers
@@ -39,6 +40,7 @@ from django.shortcuts import render
 class CensusView(TemplateView):
     template_name = 'census/census.html'
     
+
 def selectVoting(request):
     votings= set()
     allVotings = Census.objects.all().values_list('voting_id', flat=True)
@@ -68,7 +70,7 @@ def create(request):
 def create2(request):
     voting_id = request.POST.get('voting')
     voters = request.POST.getlist('voters')
-    print(voters)
+
     for voter in voters:
         census = Census(voting_id=voting_id, voter_id=voter)
         census.save()
@@ -79,6 +81,7 @@ def create2(request):
         }
     
     return HttpResponse(template.render(context, request))
+
 
 def ExportAsCSV(request):
     
@@ -159,6 +162,7 @@ def selectVotingReuse(request):
         votingsList.remove(v)
     
     return render(request,'census/census.html', {'votings':votings, 'votingsW':votingsList})
+
 
 def reuseCensus(request):
         voting_id_antiguo= request.GET.get('voting_id_antiguo')
