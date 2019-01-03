@@ -67,6 +67,21 @@ class CensusTestCase(BaseTestCase):
         response = self.client.post('/census/', data, format='json')
         self.assertEqual(response.status_code, 201)
         self.assertEqual(len(data.get('voters')), Census.objects.count() - 1)
+        
+    def test_add_new_voters_ALT(self):
+        data = {'voting_id': 100, 'voters': [101,102,103,104]}
+        response = self.client.post('/census/create2', data, format='json')
+        
+        self.assertEqual(response.status_code, 200)  
+              
+    def test_export(self):
+        prueba = Census.object.create(voting_id=200,voter_id=201)
+        prueba.save()
+        
+        response = self.client.get('/census/exportcsv') #Si no va, probar anadir format='json' en los param
+        text = response.js
+        
+
 
     def test_destroy_voter(self):
         data = {'voters': [1]}

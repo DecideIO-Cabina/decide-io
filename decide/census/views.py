@@ -1,5 +1,8 @@
 from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
+from voting.models import Voting
+from base import mods
 from rest_framework import generics
 from rest_framework.response import Response
 from django.views.generic import TemplateView
@@ -16,10 +19,33 @@ from .models import Census
 
 class CensusView(TemplateView):
     template_name = 'census/census.html'
+    
+def create(request):
+   
+    votings = Voting.objects.all()
+    allUsers = User.objects.all()
+    
+    return render(request,'census/create.html', {'allUsers':allUsers, 'votings':votings})
+
+def create2(request):
+    voting_id = request.POST.get('voting')
+    voters = request.POST.getlist('voters')
+
+    for voter in voters:
+        census = Census(voting_id=voting_id, voter_id=voter)
+        census.save()
+    
+    template = loader.get_template('census/index.html')
+    context = {
+        
+        }
+    
+    return HttpResponse(template.render(context, request))
 
 
 class CensusCreate(generics.ListCreateAPIView):
     permission_classes = (UserIsStaff,)
+    
 
     def create(self, request, *args, **kwargs):
         voting_id = request.data.get('voting_id')
