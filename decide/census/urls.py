@@ -1,9 +1,11 @@
 from django.urls import path, include
 from .views import CensusView
+from .views import HomeView
 from . import views
 
 
 urlpatterns = [
+    path('home', HomeView.as_view()),
     path('census', CensusView.as_view()),
     path('', views.CensusCreate.as_view(), name='census_create'),
     path('voters/', views.listVoters, name='census_voters'),
