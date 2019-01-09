@@ -4,10 +4,10 @@
 
 ## Miembros del grupo y esfuerzo realizado:
 
-* **Cebrero Rodriguez, Pablo:** Introducir puntuacion
-* **Galán Montero, José Juan:**
-* **González García, Iván:**
-* **Luque Muñoz, Miguel:**
+* **Cebrero Rodriguez, Pablo:** 5
+* **Galán Montero, José Juan:** 5
+* **González García, Iván:** 5
+* **Luque Muñoz, Miguel:** 5
 
 
 ## Enlaces de interés:
@@ -18,17 +18,35 @@
 * [**otros enlaces**](#bugs)
 
 ### Resumen
+El sistema decide es una plataforma de voto electrónico que consta de varios subsistemas, en nuestro caso el subsistema elegido ha sido el de censo, y debido a que vemos importante mejorar varios campos de este subsistema se han propuesto 6 cambios o mejoras en él.
 
 ### Introducción y contexto
-
+El proyecto consiste en una plataforma educativa de voto electrónico que, por lo tanto, requiere de simplicidad y debe ofrecer diferentes garantías como voto electrónico seguro, la anonimicidad y el voto seguro. Además, este sistema consta de varios subsistemas como:
+ * Autenticación
+ * Censo
+ * Votaciones
+ * Cabina de votación
+ * Almacenamiento de votos (cifrados)
+ * Recuento / MixNet
+ * Post-procesado
+ * Visualización de resultados
+ 
+ En nuestro caso, hemos elegido el subsistema **Censo**, que consiste en almacenar y asociar a que votaciones tienen acceso cada uno de los usuarios del sistema, es decir, un votante que se registre no tiene por qué tener acceso a todas las votaciones.
 ### Descripción del sistema
+
+La descripción del sistema se corresponde con la descrita en el proyecto de **decide**, la cual puede consultarse en los siguientes enlaces:
+* **Descripción y configuración del sistema** : https://github.com/DecideIO/decide-io/blob/master/README.md
+* **Descripción de los diferentes subsistemas** : https://github.com/DecideIO/decide-io/blob/master/doc/subsistemas.md
+
+A continuación se enumeran los cambios propuestos que se llevarán a cabo para estre proyecto:
+
 * Creación de varios censos simultáneamente (la votación se indica una sola vez)
 * Agrupación de censos por votación
-* Selección de votantes por DNI y nombre al crear
+* Creación de las vistas para facilitar el uso de todas las funcionalidades.
 * Reutilización de censo
 * Exportación de censo
 * Importación de censo desde Excel
-* Filtrado por edad/sexo/otros (Coordinación con Autenticación)
+
 
 ### Planificación del proyecto
 
