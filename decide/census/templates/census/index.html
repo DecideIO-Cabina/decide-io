@@ -4,17 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>app</title>
+<title>Gesti&oacute;n de censos</title>
 <meta name = "viewport" content = "width = device-width, initial-scale = 1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 
 <body>
-<h1>Censos</h1>
+<h1>Gesti&oacute;n de censos</h1>
 
+<h3>Creaci&oacute;n de censos</h3>
+<p>Formulario para crear el censo asociado a una votaci&oacute;n</p>
+<a href="/census/create">Crear censo</a>
 
+<h3>Visualizaci&oacute;n de votantes en censo</h3>
+<p>Aqu&iacute; puedes ver los votantes registrados en los censos de las diferentes votaciones</p>
+<a href="/census/voting">Votantes por votaci&oacute;n</a>
 
-<br>
+<h3>Exportaci&oacute;n de censos</h3>
+
 <form action="/census/exportexcel">
     <input type="submit" value="Export as xlsx" />
 </form>
@@ -23,17 +30,28 @@
     <input type="submit" value="Export as csv" />
 </form>
 
-<form action="/census/importcsv">
-    <input type="submit" value="Import from csv" />
-</form>
-<br>
 <form action="/census/exportjson">
     <input type="submit" value="Export from JSON" />
 </form>
-<form action="/census/importjson">
-    <input type="submit" value="Import from JSON" />
-</form>
+
+<h3>Importaci&oacute;n de censos</h3>
+
 <br>
+  <form method="post" enctype="multipart/form-data" action="/census/importcsv">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload csv</button>
+  </form>
+</br>
+
+
+<br>
+  <form method="post" enctype="multipart/form-data" action="/census/importjson">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload json</button>
+  </form>
+</br>
 
 
 
