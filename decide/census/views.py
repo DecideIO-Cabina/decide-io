@@ -40,6 +40,9 @@ from django.shortcuts import render
 
 class CensusView(TemplateView):
     template_name = 'census/census.html'
+
+class HomeView(TemplateView):
+	template_name = 'census/index.html'
     
 
 def selectVoting(request):
@@ -128,7 +131,7 @@ def ImportAsCSV(request):
            census_resource.import_data(dataset, dry_run=False)  # Actually import now
        return render(request, 'census/index.html')
     except:
-       return render(request, 'census/import.html')
+       return render(request, 'census/index.html')
 
 def ImportAsJSON(request):
     
@@ -145,7 +148,7 @@ def ImportAsJSON(request):
            census_resource.import_data(dataset, dry_run=False)  # Actually import now
        return render(request, 'census/index.html')
     except:
-       return render(request, 'census/import.html')
+       return render(request, 'census/index.html')
 
 
 def selectVotingReuse(request):
