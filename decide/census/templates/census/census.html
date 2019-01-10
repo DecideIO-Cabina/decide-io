@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang='es'>
-  <header>
-  </header>
-  <section>
-  <h1>Reutilizacion de censo</h1>
+{% extends "census/censusBase.html" %}
+{% load i18n static %}
+{% block title%}Reutilizaci&oacute;n de censo{% endblock %}
+{% block content %}
+  <h3>Reutilizaci&oacute;n de censo</h3>
     <div id="voting_antiguo">
         <form method="GET" action="/census/reuse/">
-        <h3>ID de la votacion antigua</h3>
+        <h5>ID de la votaci&oacute;n antigua</h5>
         <select id="voting_id_antiguo">
           {% for v in votings %}
             <option label="{{v}}" value="{{v}}">
@@ -16,7 +15,7 @@
      </div> 
       <div id="voting_nuevo">
       	  <form method="GET" action="/census/reuse/">
-      	  <h3>ID de la votacion nueva</h3>
+      	  <h5>ID de la votaci&oacute;n nueva</h5>
           <select id="voting_id_nuevo">
           {% for v in votingsW %}
             <option label="{{v}}" value="{{v}}">
@@ -26,6 +25,9 @@
         </form>
     </div>
   </section>
+  
+{% endblock%}
+{% block extrabody%}
 <script type="text/javascript">
   function send(){
     var data_antiguo = document.querySelector("#voting_id_antiguo").value;
@@ -34,6 +36,7 @@
 
   }
 </script>
+{% endblock %}
   
   
 </html>

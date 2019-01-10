@@ -1,4 +1,3 @@
-
 {% load render_table from django_tables2 %}
 
 <!DOCTYPE html>
@@ -16,6 +15,10 @@
 <p>Formulario para crear el censo asociado a una votaci&oacute;n</p>
 <a href="/census/create">Crear censo</a>
 
+<h3>Reutilizaci&oacute;n de censos</h3>
+<p>Reutilizar censo ya existente para otra votaci&oacute;n</p>
+<a href="/census/census">Reutilizar censo</a>
+
 <h3>Visualizaci&oacute;n de votantes en censo</h3>
 <p>Aqu&iacute; puedes ver los votantes registrados en los censos de las diferentes votaciones</p>
 <a href="/census/voting">Votantes por votaci&oacute;n</a>
@@ -23,7 +26,7 @@
 <h3>Exportaci&oacute;n de censos</h3>
 
 <form action="/census/exportexcel">
-    <input type="submit" value="Export as xlsx" />
+    <input type="submit" value="Export as xls" />
 </form>
 
 <form action="/census/exportcsv">
