@@ -17,6 +17,8 @@ class CensusTestCase(BaseTestCase):
         super().setUp()
         self.census = Census(voting_id=1, voter_id=1)
         self.census.save()
+        
+
 
     def tearDown(self):
         super().tearDown()
@@ -30,7 +32,11 @@ class CensusTestCase(BaseTestCase):
         response = self.client.get('/census/{}/?voter_id={}'.format(1, 1), format='json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), 'Valid voter')
-
+        
+    def test_filter(self):         
+        response = self.client.get('/census/user/?user_id={}'.format(1), format='json')
+        self.assertEquals(len(response.json()['list_of_votings_id']),1)
+        
     def test_list_voting(self):
         response = self.client.get('/census/?voting_id={}'.format(1), format='json')
         self.assertEqual(response.status_code, 401)

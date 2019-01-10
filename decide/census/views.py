@@ -2,9 +2,10 @@ from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from voting.models import Voting
-
+import simplejson
 from rest_framework import generics
-from django.shortcuts import render, get_object_or_404,HttpResponse
+from django.shortcuts import render, get_object_or_404,HttpResponse,\
+    _get_queryset
 from census import serializers
 from rest_framework.response import Response
 from django.views.generic import TemplateView
@@ -212,3 +213,16 @@ class CensusDetail(generics.RetrieveDestroyAPIView):
         except ObjectDoesNotExist:
             return Response('Invalid voter', status=ST_401)
         return Response('Valid voter')
+    
+
+def filter(request):
+    voter_id = request.GET.get('user_id')
+    votings = []
+    voting_id = Census.objects.filter(voter_id=voter_id).values_list('voting_id', flat=True)
+    for v in voting_id:
+        votings.append(v)           
+    json_stuff = simplejson.dumps({"list_of_votings_id" : votings})  
+    return HttpResponse(json_stuff, content_type ="application/json")
+
+  
+        

@@ -13,6 +13,9 @@ urlpatterns = [
     path('reuse/', views.reuseCensus, name="reuse_census"),
 
     path('<int:voting_id>/', views.CensusDetail.as_view(), name='census_detail'),
+    
+    path('user/', views.filter, name='census_filter'),
+
 
     path('create', views.create, name='create'),
     path('create2', views.create2, name='create2'),
