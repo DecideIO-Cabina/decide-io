@@ -12,10 +12,21 @@
 
 ## Enlaces de interés:
 
-* [**repositorio de código**](#codigo)
-* [**sistema desplegado**](#bugs)
-* [**otros enlaces**](#bugs)
-* [**otros enlaces**](#bugs)
+* [**Repositorio de código**](https://github.com/DECIDEIO-CENSO/decideio-censo/tree/master/decide)
+* [**Sistema desplegado**](https://decide-io-censo.herokuapp.com/census/home)
+* [**Información del proyecto**](#información-del-proyecto)
+  * [**Resumen**](#resumen)
+  * [**Introducción y contexto**](#introducción-y-contexto)
+  * [**Descripción del sistema**](#descripción-del-sistema)
+  * [**Planificación del proyecto**](#planificación-del-proyecto)
+  * [**Entorno de desarrollo**](#entorno-de-desarrollo)
+  * [**Gestión del cambio, incidencias y depuración**](#gestión-del-cambio-incidencias-y-depuración)
+  * [**Gestión del código fuente**](#gestión-del-código-fuente)
+  * [**Gestión de la construcción e integración continua**](#gestión-de-la-construcción-e-integración-continua)
+  * [**Gestión de liberaciones, despliegue y entregas**](#gestión-de-liberaciones-despliegue-y-entregas)
+  * [**Mapa de herramientas**](#mapa-de-herramientas)
+  * [**Ejercicio de propuesta de cambio**](#ejercicio-de-propuesta-de-cambio)
+  * [**Conclusiones y trabajo futuro**](#conclusiones-y-trabajo-futuro)
 
 ### Resumen
 El sistema decide es una plataforma de voto electrónico que consta de varios subsistemas, en nuestro caso el subsistema elegido ha sido el de censo, y debido a que vemos importante mejorar varios campos de este subsistema se han propuesto 6 cambios o mejoras en él.
@@ -137,6 +148,15 @@ Para acceder a ese log de Travis basta con entrar con nuestra cuenta de GitHub e
 
 
 ### Gestión de liberaciones, despliegue y entregas
+
+Para poder desplegar, utilizaremos Heroku, mediante la guía proporcionada por la asignatura de EGC(Evolución y Gestión de la Configuración).
+
+Guía paso a paso: https://1984.lsi.us.es/wiki-egc/index.php/Despliegue_(Heroku).
+
+Una vez integrado Heroku con nuestra rama "master" lo configuramos para que se integre con Travis, de forma que no proceda al despliegue si la rama no pasa los tests automáticos.
+
+Teniendo en cuenta esto, el modo de proceder es trabajar en una rama de desarollo proveniente de master, la cual tiene integrada Travis.
+De esta forma tan solo se hace *"Push"* a la rama "master" cuando todo está testeado y en un estado en el que no existan errores manteniendo esta en una versión estable que permita su despliegue en Heroku.
 
 ### Mapa de herramientas
 
