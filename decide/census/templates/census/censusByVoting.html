@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang='es'>
-  <header>
-  </header>
-  <section>
-    <h1>Votantes para votacion {{voting_id}}</h1>
+{% extends 'census/censusBase.html' %}
+{% block title %} Votantes para votaci&oacute;n {{voting_id}}{% endblock %}
+{% block content %}
+<section>
+    <h1>Votantes para votaci&oacute;n {{voting_id}}</h1>
 	<ul>
 		{% for v in voters %}
 	  	<li>
@@ -12,4 +11,4 @@
 		{% endfor %}
 	</ul>
   </section>
-</html>
+{% endblock %}

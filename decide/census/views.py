@@ -2,8 +2,10 @@ from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from voting.models import Voting
+import simplejson
 from rest_framework import generics
-from django.shortcuts import render, get_object_or_404,HttpResponse
+from django.shortcuts import render, get_object_or_404,HttpResponse,\
+    _get_queryset
 from census import serializers
 from rest_framework.response import Response
 from django.views.generic import TemplateView
@@ -29,25 +31,37 @@ from rest_framework.status import (
 from base.perms import UserIsStaff
 from .models import Census
 from voting.models import Voting
+
 from django.contrib.auth.models import User
+
+from django.db.models.base import Model
+from django.shortcuts import render
+
 
 class CensusView(TemplateView):
     template_name = 'census/census.html'
+
+class HomeView(TemplateView):
+	template_name = 'census/index.html'
     
+
 def selectVoting(request):
     votings= set()
     allVotings = Census.objects.all().values_list('voting_id', flat=True)
     for v in allVotings:
-          votings.add(Voting.objects.filter(id=v)[0])
+        voting = Voting.objects.filter(id=v)
+        if voting:
+            votings.add(voting[0])
     return render(request,'census/selectVoting.html', {'votings':votings})
 
 def listVoters(request):
         voting_id = request.GET.get('voting_id')
         voters = set()
         voter_ids = Census.objects.filter(voting_id=voting_id).values_list('voter_id', flat=True)
-        print(voter_ids)
         for v_id in voter_ids:
-            voters.add(User.objects.filter(id=v_id)[0])    
+            voter = User.objects.filter(id=v_id)
+            if voter:
+                voters.add(voter[0])    
         return render(request, 'census/censusByVoting.html', {'voters': voters,'voting_id':voting_id})
 
 def create(request):
@@ -60,7 +74,7 @@ def create(request):
 def create2(request):
     voting_id = request.POST.get('voting')
     voters = request.POST.getlist('voters')
-    print(voters)
+
     for voter in voters:
         census = Census(voting_id=voting_id, voter_id=voter)
         census.save()
@@ -71,6 +85,7 @@ def create2(request):
         }
     
     return HttpResponse(template.render(context, request))
+
 
 def ExportAsCSV(request):
     
@@ -116,7 +131,7 @@ def ImportAsCSV(request):
            census_resource.import_data(dataset, dry_run=False)  # Actually import now
        return render(request, 'census/index.html')
     except:
-       return render(request, 'census/import.html')
+       return render(request, 'census/index.html')
 
 def ImportAsJSON(request):
     
@@ -133,7 +148,37 @@ def ImportAsJSON(request):
            census_resource.import_data(dataset, dry_run=False)  # Actually import now
        return render(request, 'census/index.html')
     except:
-       return render(request, 'census/import.html')
+       return render(request, 'census/index.html')
+
+
+def selectVotingReuse(request):
+    votings = set()
+    votingsList = list()
+    allVotingsWithCensus = Census.objects.all().values_list('voting_id', flat=True)
+    
+    for v in allVotingsWithCensus:
+        votings.add(v)
+    
+    for v in Voting.objects.all().values_list('id', flat=True):
+        votingsList.append(v)
+    
+    for v in votings:
+        votingsList.remove(v)
+    
+    return render(request,'census/census.html', {'votings':votings, 'votingsW':votingsList})
+
+
+def reuseCensus(request):
+        voting_id_antiguo= request.GET.get('voting_id_antiguo')
+        voting_id_nuevo = request.GET.get('voting_id_nuevo')
+        
+        voters = Census.objects.filter(voting_id=voting_id_antiguo).values_list('voter_id', flat=True)
+        
+        for voter in voters:
+            census = Census(voting_id=voting_id_nuevo, voter_id=voter)
+            census.save()
+        return render(request, 'census/censoNuevo.html', {'voters': voters , 'voting_id':voting_id_nuevo})
+
     
 class CensusCreate(generics.ListCreateAPIView):
     permission_classes = (UserIsStaff,)
@@ -170,3 +215,16 @@ class CensusDetail(generics.RetrieveDestroyAPIView):
         except ObjectDoesNotExist:
             return Response('Invalid voter', status=ST_401)
         return Response('Valid voter')
+    
+
+def filter(request):
+    voter_id = request.GET.get('user_id')
+    votings = []
+    voting_id = Census.objects.filter(voter_id=voter_id).values_list('voting_id', flat=True)
+    for v in voting_id:
+        votings.append(v)           
+    json_stuff = simplejson.dumps({"list_of_votings_id" : votings})  
+    return HttpResponse(json_stuff, content_type ="application/json")
+
+  
+        

@@ -1,16 +1,12 @@
-
+{% extends 'census/censusBase.html' %}
 {% load render_table from django_tables2 %}
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>app</title>
+{% block title %} Importar censo {% endblock %}
 <meta name = "viewport" content = "width = device-width, initial-scale = 1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
-
+{% block content%}
 <body>
-<h1>Importar censo</h1>
+<h3>Importar censo</h3>
 
 
 
@@ -34,6 +30,4 @@
   </form>
 </br>
 
-
-</body>
-</html>
+{% endblock %}

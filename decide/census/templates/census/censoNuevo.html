@@ -1,0 +1,14 @@
+{% extends "census/censusBase.html" %}
+{% load i18n static %}
+{% block title%}Reutilizaci&oacute;n de censo{% endblock %}
+
+{% block content %}
+  <section>
+  <h3>El censo se ha creado satisfactoriamente y los ID de los votantes permitidos en la votaci&oacute;n {{voting_id}} son los siguientes:</h3>
+    <div id="voting">    
+    	{% for v in voters %}
+        	<option label="{{v}}" value="{{v}}">
+        {% endfor %}        
+    </div>
+  </section> 
+{% endblock %}
