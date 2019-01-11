@@ -1,12 +1,10 @@
 from django.urls import path, include
-from .views import CensusView
-from .views import HomeView
 from . import views
 
 
 urlpatterns = [
-    path('home', HomeView.as_view()),
-    path('census', CensusView.as_view()),
+    path('home', views.HomeView.as_view()),
+    
     path('', views.CensusCreate.as_view(), name='census_create'),
 
     path('voters/', views.listVoters, name='census_voters'),
@@ -27,7 +25,7 @@ urlpatterns = [
     path('exportjson', views.ExportAsJSON, name='exportjson'),
     path('exportexcel', views.ExportAsExcel, name='exportexcel'),
     
-    path('import', views.ImportAs.as_view(), name = 'import'),
+    
     path('importcsv', views.ImportAsCSV, name='importcsv'),
     path('importjson', views.ImportAsJSON, name='importjson'),
 

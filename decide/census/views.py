@@ -6,7 +6,6 @@ import simplejson
 from rest_framework import generics
 from django.shortcuts import render, get_object_or_404,HttpResponse,\
     _get_queryset
-from census import serializers
 from rest_framework.response import Response
 from django.views.generic import TemplateView
 from voting.models import Voting
@@ -38,8 +37,6 @@ from django.db.models.base import Model
 from django.shortcuts import render
 
 
-class CensusView(TemplateView):
-    template_name = 'census/census.html'
 
 class HomeView(TemplateView):
 	template_name = 'census/index.html'
@@ -114,8 +111,7 @@ def ExportAsExcel(request):
     response['Content-Disposition'] = 'attachment; filename="census.xls"'
     return response
 
-class ImportAs(TemplateView):
-    template_name = 'census/import.html'
+
     
 def ImportAsCSV(request):
     if request.method == 'POST':
@@ -163,7 +159,8 @@ def selectVotingReuse(request):
         votingsList.append(v)
     
     for v in votings:
-        votingsList.remove(v)
+        if v in votingsList:
+            votingsList.remove(v)
     
     return render(request,'census/census.html', {'votings':votings, 'votingsW':votingsList})
 
