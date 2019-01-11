@@ -102,9 +102,10 @@ https://1984.lsi.us.es/wiki-egc/images/egc/2/22/02-Decide-Install.pdf
 
 ## Gestión del cambio, incidencias y depuración
 
-Durante el desarrollo normal del proyecto se comunicará cualquier incidencia interna mediante GitHub, utilizando las etiquetas que más se adecúen al caso. Posteriormente, el desarrollador que haya realizado el último commit sobre la funcionalidad que ha provocado la incidencia deberá encargarse de la misma, bien resolviéndola o delegando su resolución. La persona al cargo de resolver la incidencia, ya sea sobre código o sobre documentación, deberá hacer un branch cuando considere necesario (según prioridad) en el que trabajará. Finalmente, combinará su trabajo con la rama principal.
+Durante el desarrollo normal del proyecto se comunicará cualquier incidencia interna mediante GitHub, utilizando las etiquetas que más se adecúen al caso. Posteriormente, el desarrollador que haya realizado el último commit sobre la funcionalidad que ha provocado la incidencia deberá encargarse de la misma, bien resolviéndola o delegando su resolución. Si la incidencia no tiene un error como origen, será el coordinador el encargado de asignar a alguien a la misma. (Ej.: https://github.com/DECIDEIO-CENSO/decideio-censo/issues/8)
+La persona al cargo de resolver la incidencia, ya sea sobre código o sobre documentación, deberá hacer un branch cuando considere necesario (según prioridad) en el que trabajará. Finalmente, combinará su trabajo con la rama principal. (Ej.: https://github.com/DECIDEIO-CENSO/decideio-censo/tree/frontend)
 
-En cuanto a las incidencias reportadas a otros subsistemas, se seguirá la plantilla encontrada en el repositorio del subsistema en cuestión, de la misma forma que se espera que las incidencias externas se reporten siguiendo la plantilla indicada en el documento "Guía de Incidencias".
+En cuanto a las incidencias reportadas a otros subsistemas, se seguirá la plantilla encontrada en el repositorio del subsistema en cuestión, de la misma forma que se espera que las incidencias externas se reporten siguiendo la plantilla indicada en el documento "Guía de Incidencias". (Ej.: https://github.com/DECIDEIO-CENSO/decideio-censo/issues/9)
 
 ### Gestión de commit
 
@@ -126,6 +127,8 @@ El tipo del commit será uno de entre:
 * **Refactor**: Corresponde a cambios en el formato del código.
 * **Tests**: Corresponde a nuevos tests o cambios en ellos.
 * **Otros**: Corresponde a pequeños arreglos ajenos al código o el propio sistema.
+
+(Ej.: https://github.com/DECIDEIO-CENSO/decideio-censo/commit/f2ff9845708f4afbd30d8cec53ef429c8de4e3cf)
 
 
 ### Gestión del código fuente
