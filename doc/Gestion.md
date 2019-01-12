@@ -43,6 +43,7 @@ El proyecto consiste en una plataforma educativa de voto electrónico que, por l
  * Visualización de resultados
  
  En nuestro caso, hemos elegido el subsistema **Censo**, que consiste en almacenar y asociar a que votaciones tienen acceso cada uno de los usuarios del sistema, es decir, un votante que se registre no tiene por qué tener acceso a todas las votaciones.
+ 
 ### Descripción del sistema
 
 La descripción del sistema se corresponde con la descrita en el proyecto de **decide**, la cual puede consultarse en los siguientes enlaces:
@@ -96,6 +97,7 @@ El Auto Config intentará encontrarlo (python.exe) en PATH, pero puede fallar.
 
 Información obtenida de http://www.lsi.us.es/docencia/get.php?id=9175
 
+
 #### Instalando decide
 En el siguiente enlace tenemos un breve tutorial de como empezar:
 https://1984.lsi.us.es/wiki-egc/images/egc/2/22/02-Decide-Install.pdf
@@ -106,6 +108,7 @@ Durante el desarrollo normal del proyecto se comunicará cualquier incidencia in
 La persona al cargo de resolver la incidencia, ya sea sobre código o sobre documentación, deberá hacer un branch cuando considere necesario (según prioridad) en el que trabajará. Finalmente, combinará su trabajo con la rama principal. (Ej.: https://github.com/DECIDEIO-CENSO/decideio-censo/tree/frontend)
 
 En cuanto a las incidencias reportadas a otros subsistemas, se seguirá la plantilla encontrada en el repositorio del subsistema en cuestión, de la misma forma que se espera que las incidencias externas se reporten siguiendo la plantilla indicada en el documento "Guía de Incidencias". (Ej.: https://github.com/DECIDEIO-CENSO/decideio-censo/issues/9)
+
 
 ### Gestión de commit
 
@@ -140,6 +143,7 @@ Se ha modificado un archivo mostrando en rojo las lineas antiguas y en verde el 
 
 https://github.com/DECIDEIO-CENSO/decideio-censo/commit/0580fb334d8d7aef44d00e7b449e73e6da3e7e88#diff-c7dc8742947f13f1ddc89ee1ebf164f1
 
+
 ### Gestión de la construcción e integración continua
 
 Para la integración continua y la realización de los test de forma automática usaremos la herramienta Travis CI que se añadirá al proyecto tal y como se vio durante la sesión de prácticas. 
@@ -147,7 +151,6 @@ Para la integración continua y la realización de los test de forma automática
 Cada vez que un usuario realice un commit, Travis comprobara que el funcionamiento del proyecto es el correcto y producirá un log con los posibles errores que hubiese encontrado en la aplicación.
 
 Para acceder a ese log de Travis basta con entrar con nuestra cuenta de GitHub en la página web de [Travis](https://travis-ci.org/) o desde la propia página de GitHub podemos comprobar si los test han sido superados con éxitos o no pulsando en el siguiente [enlace](https://github.com/DECIDEIO-CENSO/decideio-censo/commits/master). Si los test no se hubiesen pasado satisfactoriamente encontraríamos una X roja al lado de nuestro commit.
-
 
 
 ### Gestión de liberaciones, despliegue y entregas
@@ -161,8 +164,35 @@ Una vez integrado Heroku con nuestra rama "master" lo configuramos para que se i
 Teniendo en cuenta esto, el modo de proceder es trabajar en una rama de desarollo proveniente de master, la cual tiene integrada Travis.
 De esta forma tan solo se hace *"Push"* a la rama "master" cuando todo está testeado y en un estado en el que no existan errores manteniendo esta en una versión estable que permita su despliegue en Heroku.
 
+
 ### Mapa de herramientas
 
+IDE: Eclipse Oxygen
+
+Control de versiones: Git
+
+Repositorio: Github
+
+Control de repositorio: Github desktop
+
+Integración continua: Travis CI
+
+Despliegue: Docker
+
+Despliegue: Heroku
+
+
 ### Ejercicio de propuesta de cambio
+
+Para la realización de una propuesta de cambio lo primero es organizar una reunión del grupo en la cual se acordarán qué cambios se van a llevar a cabo. Una vez definidos estos cambios, y quien los va a implementar, el coordinador creará las issues siguiendo la plantilla [Feature](https://github.com/DECIDEIO-CENSO/decideio-censo/issues/new?template=propuesta-de-feature.md)
+ y las asignará al miembro del grupo acordado, el cual será ahora responsable de la issue.
+
+Una vez que tenga la issue asignada uno de los miembros, este deberá ir a la [Guía de incidencias](https://github.com/DECIDEIO-CENSO/decideio-censo/blob/master/doc/Guia_incidencias.md) y seguir los pasos allí descritos, posteriormente deberá hacer un Branch, si fuese necesario, y realizar los cambios descritos en la issue.
+
+Después de implementar los cambios deberá hacer merge de su rama con la rama Dev y comprobar que los test que se pasan en [Travis CI](https://travis-ci.org/) se completan correctamente.
+
+Si todo ha ido bien ya solo le quedara cerrar su issue siguiendo una vez más la [Guía de incidencias](https://github.com/DECIDEIO-CENSO/decideio-censo/blob/master/doc/Guia_incidencias.md).
+
+
 
 ### Conclusiones y trabajo futuro
