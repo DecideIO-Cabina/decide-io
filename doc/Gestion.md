@@ -190,15 +190,21 @@ Para la realización de una propuesta de cambio lo primero es organizar una reun
 Una vez que tenga la issue asignada uno de los miembros, este deberá ir a la [Guía de incidencias](https://github.com/DECIDEIO-CENSO/decideio-censo/blob/master/doc/Guia_incidencias.md) y seguir los pasos allí descritos. Posteriormente deberá, desde la consola de comandos de Git, hacer los siguientes pasos:
 
 -checkout master
+
 -git pull
+
 -git branch nombre_nueva_rama (Si el miembro del grupo considera que no es necesario podrá no hacerlo)
 
 Después de realizar esos comandos, deberá implementar la nueva funcionalidad descrita en la issue y una vez acabada volvera a usar la consola de comandos de Git para realizar los siguientes pasos:
 
 -git status (Para ver los ficheros modificados)
+
 -git add ficheros_modificados
--git commit (Siguiendo las indicaciones [**Gestión de commit**](#gestión-de-commit)
+
+-git commit (Siguiendo las indicaciones [**Gestión de commit**](#gestión-de-commit))
+
 -git pull
+
 -git push
 
 Una vez terminado con la consola deberá hacer merge de su rama con la rama Dev y comprobar que los test que se pasan en [Travis CI](https://travis-ci.org/) se completan correctamente.
@@ -210,3 +216,17 @@ Nota: La creación de la rama es opcional y depende del criterio del miembro enc
 
 
 ### Conclusiones y trabajo futuro
+
+#### Conclusiones
+
+El objetivo de este proyecto era implementar cambios en Decide y aprender el uso de diversas herramientas que nos permiten trabajar en grupo y realizar una gestión e integración continua del software.
+
+Al comenzar el proyecto no fue fácil habituarnos al uso de estas herramientas, puesto que para todos los miembros del grupo eran algo nuevo. Aunque al final, pudimos establecer un plan de trabajo con el que hemos conseguido implementar los cambios en el proyecto haciendo un uso correcto de todas las herramientas.
+
+#### Trabajo futuro
+
+Las propuestas de trabajo futuro para mejorar el censo son las siguientes:
+
+-Actualmente se pueden crear censos que con id de users que no existen y con id de votings que no existen y lo correcto sería que se comprobase antes de crearse un censo.
+
+-Los censos se crean actualmente con los id de los votings y los id de los voters y es algo lioso para una persona puesto que son solo números, por lo tanto, estaría bien que al crearse se viese el nombre del voting y el nombre o el dni de los voters.
