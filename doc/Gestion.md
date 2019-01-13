@@ -187,11 +187,25 @@ Despliegue: Heroku
 Para la realización de una propuesta de cambio lo primero es organizar una reunión del grupo en la cual se acordarán qué cambios se van a llevar a cabo. Una vez definidos estos cambios, y quien los va a implementar, el coordinador creará las issues siguiendo la plantilla [Feature](https://github.com/DECIDEIO-CENSO/decideio-censo/issues/new?template=propuesta-de-feature.md)
  y las asignará al miembro del grupo acordado, el cual será ahora responsable de la issue.
 
-Una vez que tenga la issue asignada uno de los miembros, este deberá ir a la [Guía de incidencias](https://github.com/DECIDEIO-CENSO/decideio-censo/blob/master/doc/Guia_incidencias.md) y seguir los pasos allí descritos, posteriormente deberá hacer un Branch, si fuese necesario, y realizar los cambios descritos en la issue.
+Una vez que tenga la issue asignada uno de los miembros, este deberá ir a la [Guía de incidencias](https://github.com/DECIDEIO-CENSO/decideio-censo/blob/master/doc/Guia_incidencias.md) y seguir los pasos allí descritos. Posteriormente deberá, desde la consola de comandos de Git, hacer los siguientes pasos:
 
-Después de implementar los cambios deberá hacer merge de su rama con la rama Dev y comprobar que los test que se pasan en [Travis CI](https://travis-ci.org/) se completan correctamente.
+-checkout master
+-git pull
+-git branch nombre_nueva_rama (Si el miembro del grupo considera que no es necesario podrá no hacerlo)
 
-Si todo ha ido bien ya solo le quedara cerrar su issue siguiendo una vez más la [Guía de incidencias](https://github.com/DECIDEIO-CENSO/decideio-censo/blob/master/doc/Guia_incidencias.md).
+Después de realizar esos comandos, deberá implementar la nueva funcionalidad descrita en la issue y una vez acabada volvera a usar la consola de comandos de Git para realizar los siguientes pasos:
+
+-git status (Para ver los ficheros modificados)
+-git add ficheros_modificados
+-git commit (Siguiendo las indicaciones [**Gestión de commit**](#gestión-de-commit)
+-git pull
+-git push
+
+Una vez terminado con la consola deberá hacer merge de su rama con la rama Dev y comprobar que los test que se pasan en [Travis CI](https://travis-ci.org/) se completan correctamente.
+
+Si todo ha ido bien ya solo le quedara cerrar su issue siguiendo una vez más la [Guía de incidencias](https://github.com/DECIDEIO-CENSO/decideio-censo/blob/master/doc/Guia_incidencias.md) y hacer merge de la rama Dev con la rama Master.
+
+Nota: La creación de la rama es opcional y depende del criterio del miembro encargado, si considera que los cambios no son suficientemente grandes como para crear una rama nueva deberá trabajar sobre la rama Dev y nunca sobre Master.
 
 
 
