@@ -1,0 +1,42 @@
+{% extends "census/censusBase.html" %}
+{% load i18n static %}
+{% block title%}Reutilizaci&oacute;n de censo{% endblock %}
+{% block content %}
+  <h3>Reutilizaci&oacute;n de censo</h3>
+    <div id="voting_antiguo">
+        <form method="GET" action="/census/reuse/">
+        <h5>ID de la votaci&oacute;n antigua</h5>
+        <select id="voting_id_antiguo">
+          {% for v in votings %}
+            <option label="{{v}}" value="{{v}}">
+          {% endfor %}
+        </select>
+        </form>
+     </div> 
+      <div id="voting_nuevo">
+      	  <form method="GET" action="/census/reuse/">
+      	  <h5>ID de la votaci&oacute;n nueva</h5>
+          <select id="voting_id_nuevo">
+          {% for v in votingsW %}
+            <option label="{{v}}" value="{{v}}">
+          {% endfor %}
+        </select><br><br>
+        <input type="button" value="Reutilizar" onClick="send()"/>
+        </form>
+    </div>
+  </section>
+  
+{% endblock%}
+{% block extrabody%}
+<script type="text/javascript">
+  function send(){
+    var data_antiguo = document.querySelector("#voting_id_antiguo").value;
+    var data_nuevo = document.querySelector("#voting_id_nuevo").value;
+    location.href = "/census/reuse/?voting_id_antiguo="+data_antiguo+"&voting_id_nuevo="+data_nuevo;
+
+  }
+</script>
+{% endblock %}
+  
+  
+</html>

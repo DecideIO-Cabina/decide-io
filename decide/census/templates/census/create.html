@@ -1,0 +1,60 @@
+{% extends "census/censusBase.html" %}
+{% load i18n static %}
+{% block title%}Creaci&oacute;n de censo{% endblock %}
+
+{% block content %}
+<div id="create">
+        <h2>Creaci&oacute;n de censo</h2>
+		
+		<p>Votaci&oacute;n: </p>
+		
+		<form method="post" action="/census/create2">
+			{% csrf_token %}
+			
+			<div>
+			<select name="voting">
+				{% for v in votings %}
+  					<option value="{{v.id}}">{{v.name}}</option>
+  				{% endfor %}
+			</select>
+			</div>
+			<br/>
+			<div>
+			<select multiple name="voters">
+				{% for u in allUsers %}
+  					<option value="{{u.id}}">{{u.username}}</option>
+  				{% endfor %}
+			</select>
+			</div>
+			<br/>
+
+        	<input type="submit" value="Submit">
+        </form>
+</div>
+   
+{% endblock %}
+
+{% block extrabody %}
+<script>
+
+function create() {
+            
+            var data = {
+                voting_id: document.querySelector("select[name=voting]").value,
+                voters: document.querySelector("select[name=voters[]").value,
+            }
+            postData("/census/", data)
+              .then(data => {
+                alert("{% trans "Congratulations. Your vote has been sent" %}")
+               
+              })
+              .catch(error => {
+                alert("{% trans "Error: " %}" + error);
+                console.error(error);
+              });
+        }
+
+</script>
+
+{% endblock %}
+
