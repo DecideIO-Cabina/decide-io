@@ -32,31 +32,31 @@ class StoreView(generics.ListAPIView):
         vid = request.data.get('voting')
         voting = mods.get('voting', params={'id': vid})
         if not voting or not isinstance(voting, list):
-            return Response("Error: La votación con id "+str(vid)+" no existe.", status=status.HTTP_401_UNAUTHORIZED)
+            return Response({}, status=status.HTTP_401_UNAUTHORIZED)
         start_date = voting[0].get('start_date', None)
         end_date = voting[0].get('end_date', None)
         not_started = not start_date or timezone.now() < parse_datetime(start_date)
         is_closed = end_date and parse_datetime(end_date) < timezone.now()
         if not_started or is_closed:
-            return Response("Error: La votación con id "+str(vid)+" no está abierta.", status=status.HTTP_401_UNAUTHORIZED)
+            return Response({}, status=status.HTTP_401_UNAUTHORIZED)
 
         uid = request.data.get('voter')
         vote = request.data.get('vote')
 
         if not vid or not uid or not vote:
-            return Response("Error: uid: "+str(uid)", vid: "+str(vid)+" o vote: "+str(vote)+" no son válidos", status=status.HTTP_400_BAD_REQUEST)
+            return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
         # validating voter
         token = request.auth.key
         voter = mods.post('authentication', entry_point='/getuser/', json={'token': token})
         voter_id = voter.get('id', None)
         if not voter_id or voter_id != uid:
-            return Response("Error, token no válido ("+token+")", status=status.HTTP_401_UNAUTHORIZED)
+            return Response({}, status=status.HTTP_401_UNAUTHORIZED)
 
         # the user is in the census
         perms = mods.get('census/{}'.format(vid), params={'voter_id': uid}, response=True)
         if perms.status_code == 401:
-            return Response("Error, el usuario no está en el censo", status=status.HTTP_401_UNAUTHORIZED)
+            return Response({}, status=status.HTTP_401_UNAUTHORIZED)
 
         a = vote.get("a")
         b = vote.get("b")
